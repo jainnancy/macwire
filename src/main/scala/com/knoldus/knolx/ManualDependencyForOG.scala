@@ -1,6 +1,6 @@
 package com.knoldus.knolx
 
-class ManualDependencyForOG {
+object ManualDependencyForOG extends App {
 
   case class Water()
 
