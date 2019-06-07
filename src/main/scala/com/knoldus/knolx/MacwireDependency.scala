@@ -30,15 +30,15 @@ object MacwireDependency extends App {
     println(s"Hello! Your Coffee Machine $this is ready.")
   }
 
-  val water: Water = wire[Water]
-  val coffeeBeans: CoffeeBeans = wire[CoffeeBeans]
-  val milk: Milk = wire[Milk]
-  val espresso: Espresso = wire[Espresso]
-  val cappuccino: Cappuccino = wire[Cappuccino]
-  val latte: Latte = wire[Latte]
-  val tea: Tea = wire[Tea]
+  lazy val water: Water = wire[Water]
+  lazy val coffeeBeans: CoffeeBeans = wire[CoffeeBeans]
+  lazy val milk: Milk = wire[Milk]
+  lazy val espresso: Espresso = wire[Espresso]
+  lazy val cappuccino: Cappuccino = wire[Cappuccino]
+  lazy val latte: Latte = wire[Latte]
+  lazy val tea: Tea = wire[Tea]
 
-  val coffeeList = List(espresso, cappuccino, latte)
+  lazy val coffeeList = List(espresso, cappuccino, latte)
 
   val coffeeMachine = wire[CoffeeMachine]
 }

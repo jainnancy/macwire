@@ -4,23 +4,25 @@ package com.knoldus.knolx
 
 object ManualDependency extends App {
 
-  case class Water()
+  class Water
 
-  case class CoffeeBeans()
+  class CoffeeBeans
 
-  case class Milk()
+  class Milk
+
+  class TeaLeaves
 
   trait Coffee
 
-  case class Espresso(water: Water, coffeeBeans: CoffeeBeans) extends Coffee
+  class Espresso(coffeeBeans: CoffeeBeans, water: Water) extends Coffee
 
-  case class Cappuccino(water: Water, milk: Milk, coffeeBeans: CoffeeBeans) extends Coffee
+  class Cappuccino(water: Water, milk: Milk, coffeeBeans: CoffeeBeans) extends Coffee
 
-  case class Latte(water: Water, coffeeBeans: CoffeeBeans, milk: Milk) extends Coffee
+  class Latte(water: Water, coffeeBeans: CoffeeBeans, milk: Milk) extends Coffee
 
-  case class Tea(water: Water, milk: Milk)
+  class Tea(water: Water, milk: Milk, teaLeaves: TeaLeaves)
 
-  case class CoffeeMachine(milk: Milk,
+  class CoffeeMachine(milk: Milk,
                       coffee: List[Coffee],
                       tea: Tea) {
     println(s"Hello! Your Coffee Machine $this is ready.")
@@ -29,11 +31,12 @@ object ManualDependency extends App {
   val water = new Water
   val coffeeBeans = new CoffeeBeans
   val milk = new Milk
-  val espresso = new Espresso(water, coffeeBeans)
+  val teaLeaves = new TeaLeaves
+  val espresso = new Espresso(coffeeBeans, water)
   val cappuccino = new Cappuccino(water, milk, coffeeBeans)
   val latte = new Latte(water, coffeeBeans, milk)
-  val coffee = List(espresso, cappuccino, latte)
-  val tea = new Tea(water, milk)
+  val coffees = List(espresso, cappuccino, latte)
+  val coffeeMachine = new CoffeeMachine(milk, coffees, tea)
 
-  val coffeeMachine = new CoffeeMachine(milk, coffee, tea)
+  val tea = new Tea(water, milk, teaLeaves)
 }
