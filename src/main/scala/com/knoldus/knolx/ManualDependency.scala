@@ -23,7 +23,7 @@ object ManualDependency extends App {
   class Tea(water: Water, milk: Milk, teaLeaves: TeaLeaves)
 
   class CoffeeMachine(milk: Milk,
-                      coffee: List[Coffee],
+                      coffees: List[Coffee],
                       tea: Tea) {
     println(s"Hello! Your Coffee Machine $this is ready.")
   }
@@ -36,7 +36,7 @@ object ManualDependency extends App {
   val cappuccino = new Cappuccino(water, milk, coffeeBeans)
   val latte = new Latte(water, coffeeBeans, milk)
   val coffees = List(espresso, cappuccino, latte)
-  val coffeeMachine = new CoffeeMachine(milk, coffees, tea)
-
   val tea = new Tea(water, milk, teaLeaves)
+
+  val coffeeMachine = new CoffeeMachine(milk, coffees, tea)
 }
